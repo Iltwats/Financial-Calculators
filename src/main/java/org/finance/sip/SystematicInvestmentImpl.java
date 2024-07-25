@@ -18,22 +18,23 @@ public class SystematicInvestmentImpl implements SystematicInvestment {
         double monthlyInterestRate = investmentModel.annualInterestRate / 12;
         double monthlyInterest = monthlyInterestRate / 100;
         int totalPayments = investmentModel.timePeriod * 12;
-        return calculateInterest(investmentModel.investmentValue, monthlyInterest, totalPayments) - totalInvestment();
+        return calculateSIPInterest(investmentModel.investmentValue, monthlyInterest, totalPayments) - totalInvestment();
     }
 
     @Override
     public double estimatedReturnsLumpsum() {
-        double monthlyInterestRate = investmentModel.annualInterestRate / 12;
-        double monthlyInterest = monthlyInterestRate / 100;
-        int totalPayments = investmentModel.timePeriod;
-        return calculateInterest(investmentModel.investmentValue, monthlyInterest, totalPayments) - totalInvestment();
+        double annualRate = investmentModel.annualInterestRate  / 100;
+        return calculateLumpsumInterest(investmentModel.investmentValue, annualRate, investmentModel.timePeriod) - totalInvestment();
     }
 
-    double calculateInterest(double investmentValue, double interestRate, int totalPayments) {
+    double calculateSIPInterest(double principal, double interestRate, int totalPayments) {
         double periodicInterest = 1 + interestRate;
         double compoundingValue = (Math.pow(periodicInterest, totalPayments) - 1) / interestRate;
+        return principal * compoundingValue * periodicInterest;
+    }
 
-        return investmentValue * compoundingValue * periodicInterest;
+    double calculateLumpsumInterest(double principal, double rate, int years) {
+        return principal * Math.pow(1 + (rate / 12), 12 * years);
     }
 
 }

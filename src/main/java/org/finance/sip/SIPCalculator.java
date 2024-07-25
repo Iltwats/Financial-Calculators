@@ -2,7 +2,7 @@ package org.finance.sip;
 
 public class SIPCalculator {
     public static void main(String[] args) {
-        InvestmentModel investmentModel = new InvestmentModel(10000, 15, 10, InvestmentPlan.LUMPSUM);
+        InvestmentModel investmentModel = new InvestmentModel(10000, 15, 10, InvestmentPlan.MONTHLY);
         SystematicInvestment systematicInvestment = new SystematicInvestmentImpl(investmentModel);
         printDetails(systematicInvestment, investmentModel);
     }
