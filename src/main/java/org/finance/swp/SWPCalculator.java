@@ -4,7 +4,7 @@ public class SWPCalculator {
     public static void main(String[] args) {
         System.out.println("SWP Calculator");
         InvestmentModel investmentModel = new InvestmentModel(
-                300000000, 2500000, 18, 30, WithdrawalPlan.MONTHLY
+                300000, 2500, 18, 30, WithdrawalPlan.MONTHLY
         );
         SystematicWithdrawal systematicWithdrawal = new SystematicWithdrawalImpl(investmentModel);
         printDetails(systematicWithdrawal);
