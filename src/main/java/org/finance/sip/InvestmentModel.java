@@ -13,9 +13,4 @@ public class InvestmentModel {
         this.timePeriod = timePeriod;
         this.investmentPlan = investmentPlan;
     }
-
-    public InvestmentModel setInvestmentValue(double investmentValue) {
-        this.investmentValue = investmentValue;
-        return this;
-    }
 }
